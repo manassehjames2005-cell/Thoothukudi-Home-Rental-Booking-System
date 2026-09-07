@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Add Rental House</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <h2>🏠 Thoothukudi Rental</h2>
+
+    <a href="/">
+        Home
+    </a>
+
+</nav>
+
+
+<div class="form-container">
+
+
+    <h1>
+        Add Your Rental House
+    </h1>
+
+
+    <form
+        method="POST"
+        onsubmit="return validateHouseForm()">
+
+
+        <label>
+            Owner Name
+        </label>
+
+        <input
+            type="text"
+            name="owner_name"
+            required>
+
+
+        <label>
+            Phone
+        </label>
+
+        <input
+            type="tel"
+            name="phone"
+            required>
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            name="email">
+
+
+        <label>
+            Area
+        </label>
+
+        <select
+            name="area_id"
+            required>
+
+            <option value="">
+                Select Area
+            </option>
+
+
+            {% for area in areas %}
+
+            <option value="{{ area.area_id }}">
+
+                {{ area.area_name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label>
+            Address
+        </label>
+
+        <input
+            type="text"
+            name="address"
+            required>
+
+
+        <label>
+            BHK
+        </label>
+
+        <select
+            name="bhk"
+            required>
+
+            <option value="">
+                Select BHK
+            </option>
+
+            <option>
+                1 BHK
+            </option>
+
+            <option>
+                2 BHK
+            </option>
+
+            <option>
+                3 BHK
+            </option>
+
+        </select>
+
+
+        <label>
+            Monthly Rent
+        </label>
+
+        <input
+            type="number"
+            name="rent"
+            min="1"
+            required>
+
+
+        <label>
+            Advance Amount
+        </label>
+
+        <input
+            type="number"
+            name="advance"
+            min="0">
+
+
+        <label>
+            Bedrooms
+        </label>
+
+        <input
+            type="number"
+            name="bedrooms"
+            min="1"
+            required>
+
+
+        <label>
+            Bathrooms
+        </label>
+
+        <input
+            type="number"
+            name="bathrooms"
+            min="1"
+            required>
+
+
+        <label>
+            Floor
+        </label>
+
+        <select name="floor">
+
+            <option>
+                Ground Floor
+            </option>
+
+            <option>
+                1st Floor
+            </option>
+
+            <option>
+                2nd Floor
+            </option>
+
+            <option>
+                3rd Floor
+            </option>
+
+        </select>
+
+
+        <label>
+            House Type
+        </label>
+
+        <select name="house_type">
+
+            <option>
+                Independent House
+            </option>
+
+            <option>
+                Apartment
+            </option>
+
+        </select>
+
+
+        <label>
+            Furnishing
+        </label>
+
+        <select name="furnishing">
+
+            <option>
+                Fully Furnished
+            </option>
+
+            <option>
+                Semi Furnished
+            </option>
+
+            <option>
+                Unfurnished
+            </option>
+
+        </select>
+
+
+        <label>
+            Parking
+        </label>
+
+        <select name="parking">
+
+            <option>Yes</option>
+
+            <option>No</option>
+
+        </select>
+
+
+        <label>
+            Water Supply
+        </label>
+
+        <select name="water_supply">
+
+            <option>
+                24 Hours
+            </option>
+
+            <option>
+                12 Hours
+            </option>
+
+        </select>
+
+
+        <label>
+            Pets Allowed
+        </label>
+
+        <select name="pets_allowed">
+
+            <option>Yes</option>
+
+            <option>No</option>
+
+        </select>
+
+
+        <label>
+            Preferred Tenant
+        </label>
+
+        <select name="preferred_tenant">
+
+            <option>Family</option>
+
+            <option>Bachelor</option>
+
+            <option>Anyone</option>
+
+        </select>
+
+
+        <label>
+            Description
+        </label>
+
+        <textarea
+            name="description"
+            rows="5"></textarea>
+
+
+        <button type="submit">
+
+            ➕ Add House
+
+        </button>
+
+
+    </form>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+
+</body>
+
+</html>

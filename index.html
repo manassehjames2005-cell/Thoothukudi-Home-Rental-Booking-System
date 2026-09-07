@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Thoothukudi Rental</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <h2>🏠 Thoothukudi Rental</h2>
+
+    <div>
+
+        <a href="/">Home</a>
+
+        <a href="/add-house">
+            Owner
+        </a>
+
+    </div>
+
+</nav>
+
+
+<section class="hero">
+
+
+    <h1>
+        Find Your Perfect Rental Home
+    </h1>
+
+
+    <p>
+        Search houses across Thoothukudi
+    </p>
+
+
+    <form
+        action="/houses"
+        method="GET"
+        class="filter-form">
+
+
+        <!-- AREA -->
+
+        <select name="area">
+
+            <option value="">
+                Select Area
+            </option>
+
+
+            {% for area in areas %}
+
+            <option value="{{ area.area_id }}">
+
+                {{ area.area_name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <!-- BHK -->
+
+        <select name="bhk">
+
+            <option value="">
+                Select BHK
+            </option>
+
+            <option value="1 BHK">
+                1 BHK
+            </option>
+
+            <option value="2 BHK">
+                2 BHK
+            </option>
+
+            <option value="3 BHK">
+                3 BHK
+            </option>
+
+        </select>
+
+
+        <!-- PRICE -->
+
+        <select name="price">
+
+            <option value="">
+                Select Budget
+            </option>
+
+            <option value="under10000">
+                Under ₹10,000
+            </option>
+
+            <option value="10000-15000">
+                ₹10,000 - ₹15,000
+            </option>
+
+            <option value="15000-20000">
+                ₹15,000 - ₹20,000
+            </option>
+
+            <option value="above20000">
+                Above ₹20,000
+            </option>
+
+        </select>
+
+
+        <!-- HOUSE TYPE -->
+
+        <select name="house_type">
+
+            <option value="">
+                House Type
+            </option>
+
+            <option>
+                Independent House
+            </option>
+
+            <option>
+                Apartment
+            </option>
+
+        </select>
+
+
+        <!-- FURNISHING -->
+
+        <select name="furnishing">
+
+            <option value="">
+                Furnishing
+            </option>
+
+            <option>
+                Fully Furnished
+            </option>
+
+            <option>
+                Semi Furnished
+            </option>
+
+            <option>
+                Unfurnished
+            </option>
+
+        </select>
+
+
+        <!-- PARKING -->
+
+        <select name="parking">
+
+            <option value="">
+                Parking
+            </option>
+
+            <option>
+                Yes
+            </option>
+
+            <option>
+                No
+            </option>
+
+        </select>
+
+
+        <button type="submit">
+
+            🔍 Search
+
+        </button>
+
+
+    </form>
+
+</section>
+
+
+<section class="how">
+
+    <h2>
+        How It Works
+    </h2>
+
+
+    <div class="steps">
+
+
+        <div>
+
+            <h3>
+                1️⃣ Search
+            </h3>
+
+            <p>
+                Select your preferred
+                area and house details.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                2️⃣ View
+            </h3>
+
+            <p>
+                Compare available
+                rental houses.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                3️⃣ Contact
+            </h3>
+
+            <p>
+                Contact the house owner.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+
+</body>
+
+</html>

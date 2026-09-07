@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Rental Houses</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <h2>🏠 Thoothukudi Rental</h2>
+
+    <div>
+
+        <a href="/">Home</a>
+
+        <a href="/add-house">
+            Owner
+        </a>
+
+    </div>
+
+</nav>
+
+
+<section class="listing">
+
+
+    <h1>
+        Available Rental Houses
+    </h1>
+
+
+    <input
+        type="text"
+        id="searchInput"
+        class="search"
+        placeholder="Search area..."
+        onkeyup="searchHouses()">
+
+
+    <div class="house-grid">
+
+
+        {% for house in houses %}
+
+
+        <div class="house-card">
+
+
+            <div class="house-image">
+                🏠
+            </div>
+
+
+            <h2>
+
+                {{ house.bhk }}
+
+            </h2>
+
+
+            <h3>
+
+                📍 {{ house.area_name }}
+
+            </h3>
+
+
+            <p>
+
+                {{ house.address }}
+
+            </p>
+
+
+            <div class="rent">
+
+                ₹{{ "{:,.0f}".format(
+                    house.monthly_rent
+                ) }}
+
+                <span>
+                    / Month
+                </span>
+
+            </div>
+
+
+            <div class="details">
+
+                <p>
+                    🛏 {{ house.bedrooms }}
+                    Bedrooms
+                </p>
+
+                <p>
+                    🚿 {{ house.bathrooms }}
+                    Bathrooms
+                </p>
+
+                <p>
+                    🏢 {{ house.floor }}
+                </p>
+
+                <p>
+                    🛋 {{ house.furnishing }}
+                </p>
+
+                <p>
+                    🚗 Parking:
+                    {{ house.parking }}
+                </p>
+
+                <p>
+                    💧 {{ house.water_supply }}
+                </p>
+
+            </div>
+
+
+            <p>
+
+                {{ house.description }}
+
+            </p>
+
+
+            {% if house.status == "Available" %}
+
+
+            <p class="available">
+
+                ✓ Available
+
+            </p>
+
+
+            <a
+                href="tel:{{ house.phone }}"
+                class="contact">
+
+                📞 Contact Owner
+
+            </a>
+
+
+            {% elif house.status == "Booked" %}
+
+
+            <p class="booked">
+
+                🔴 Booked
+
+            </p>
+
+
+            {% else %}
+
+
+            <p class="notavailable">
+
+                ❌ Not Available
+
+            </p>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+        {% else %}
+
+
+        <div class="no-result">
+
+            <h2>
+                😔 No houses found
+            </h2>
+
+            <p>
+                Try different filters.
+            </p>
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+</section>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+
+</body>
+
+</html>
